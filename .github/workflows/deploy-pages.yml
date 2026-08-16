@@ -35,7 +35,7 @@ jobs:
           mkdir -p .pages-server-routes
           mv src/app/api .pages-server-routes/api
           mv src/app/order-confirmation .pages-server-routes/order-confirmation
-          NEXT_PUBLIC_STATIC_SITE=true npm run build -- --webpack
+          GITHUB_PAGES_PROJECT_SITE=true NEXT_PUBLIC_STATIC_SITE=true npm run build -- --webpack
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
