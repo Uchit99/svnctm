@@ -85,7 +85,7 @@ export default function ContactPage() {
                 Address
               </h3>
               <p className="text-svnctm-charcoal/70">
-                Mumbai, India
+                Delhi, India
               </p>
             </div>
           </div>
