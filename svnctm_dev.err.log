@@ -1,0 +1,165 @@
+Error: Cannot apply unknown utility class `bg-svnctm-white-warm`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:21:1682)][0m
+    [2m[at Oe (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:16:39796)][0m
+    [2m[at C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:21:711][0m
+    [2m[at ai (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:5:1775)][0m
+    [2m[at O (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:5:1377)][0m
+    [2m[at Pe (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:21:172)][0m
+    [2m[at On (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:104:5)][0m
+    [2m[at async _n (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:38:631)][0m
+    [2m[at async an (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\@tailwindcss\node\dist\index.js:10:3415)][0m
+⨯ ./src/app/globals.css
+Error: Error evaluating Node.js code
+CssSyntaxError: tailwindcss: C:\Users\safec\OneDrive\Desktop\svnctm\src\app\globals.css:1:1: Cannot apply unknown utility class `bg-svnctm-white-warm`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:166:32)]
+    [at Object.Once (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\@tailwindcss\postcss\dist\index.js:10:7013)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:104:5)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:299:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:70:34)]
+    [at async run (turbopack:///[turbopack-node]/child_process/evaluate.ts:89:23)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+
+
+(node:15500) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/safec/OneDrive/Desktop/svnctm/tailwind.config.ts?id=1786866578015 is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\safec\OneDrive\Desktop\svnctm\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Error: Cannot apply unknown utility class `font-medium`
+    [2m[at onInvalidCandidate (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:21:1879)][0m
+    [2m[at Oe (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:16:39796)][0m
+    [2m[at C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:21:711][0m
+    [2m[at ai (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:5:1775)][0m
+    [2m[at O (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:5:1377)][0m
+    [2m[at Pe (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:21:172)][0m
+    [2m[at On (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:38:294)][0m
+    [2m[at async _n (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\tailwindcss\dist\lib.js:38:631)][0m
+    [2m[at async an (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\@tailwindcss\node\dist\index.js:10:3415)][0m
+    [2m[at async E (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\@tailwindcss\postcss\dist\index.js:10:3996)][0m
+⨯ ./src/app/globals.css
+Error: Error evaluating Node.js code
+CssSyntaxError: tailwindcss: C:\Users\safec\OneDrive\Desktop\svnctm\src\app\globals.css:1:1: Cannot apply unknown utility class `font-medium`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:166:32)]
+    [at Object.Once (C:\Users\safec\OneDrive\Desktop\svnctm\node_modules\@tailwindcss\postcss\dist\index.js:10:7013)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:299:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts?config=[project]/postcss.config.mjs:70:34)]
+    [at async run (turbopack:///[turbopack-node]/child_process/evaluate.ts:89:23)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+
+
+(node:16000) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/safec/OneDrive/Desktop/svnctm/tailwind.config.ts?id=1786866591429 is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\safec\OneDrive\Desktop\svnctm\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+⨯ ./src/app/globals.css:1123:8
+Error: Parsing CSS source code failed
+  [90m1121 |[0m   }
+  [90m1122 |[0m }
+[31m[1m>[0m [90m1123 |[0m @[36mimport[0m url([32m'https://fonts.googleapis.com/css2?family=Avenir:wght@400;500;600;700&displa...[0m
+  [90m     |[0m        [31m[1m^[0m
+  [90m1124 |[0m @layer base {
+  [90m1125 |[0m   :root {
+  [90m1126 |[0m     --primary: #[33mC54B8D[0m;
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Generated code of PostCSS transform of file content of src/app/globals.css:
+./src/app/globals.css:1123:8
+  [90m1121 |[0m   }
+  [90m1122 |[0m }
+[31m[1m>[0m [90m1123 |[0m @[36mimport[0m url([32m'https://fonts.googleapis.com/css2?family=Avenir:wght@400;500;600;700&displa...[0m
+  [90m     |[0m        [31m[1m^[0m
+  [90m1124 |[0m @layer base {
+  [90m1125 |[0m   :root {
+  [90m1126 |[0m     --primary: #[33mC54B8D[0m;
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+
+
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+Error: Route "/order-confirmation" used `searchParams.orderId`. `searchParams` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at OrderConfirmationPage (src\app\order-confirmation\page.tsx:14:32)
+  12 |
+  13 | export default function OrderConfirmationPage({ searchParams }: OrderConfirmationPageProps) {
+> 14 |   const orderId = searchParams.orderId || 'SV123456789';
+     |                                ^
+  15 |
+  16 |   return (
+  17 |     <>
+(node:5392) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/safec/OneDrive/Desktop/svnctm/tailwind.config.ts?id=1786867295904 is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\safec\OneDrive\Desktop\svnctm\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Error: Route "/order-confirmation" used `searchParams.orderId`. `searchParams` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at OrderConfirmationPage (src\app\order-confirmation\page.tsx:14:32)
+  12 |
+  13 | export default function OrderConfirmationPage({ searchParams }: OrderConfirmationPageProps) {
+> 14 |   const orderId = searchParams.orderId || 'SV123456789';
+     |                                ^
+  15 |
+  16 |   return (
+  17 |     <>
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+[browser] Image with src "/placeholder-product.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+[browser] Image with src "/placeholder-product.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] Image with src "/images/sanctum-hero.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] Image with src "/images/sanctum-hero.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+Error: Route "/order-confirmation" used `searchParams.orderId`. `searchParams` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at OrderConfirmationPage (src\app\order-confirmation\page.tsx:14:32)
+  12 |
+  13 | export default function OrderConfirmationPage({ searchParams }: OrderConfirmationPageProps) {
+> 14 |   const orderId = searchParams.orderId || 'SV123456789';
+     |                                ^
+  15 |
+  16 |   return (
+  17 |     <>
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+Error: Route "/order-confirmation" used `searchParams.orderId`. `searchParams` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at OrderConfirmationPage (src\app\order-confirmation\page.tsx:14:32)
+  12 |
+  13 | export default function OrderConfirmationPage({ searchParams }: OrderConfirmationPageProps) {
+> 14 |   const orderId = searchParams.orderId || 'SV123456789';
+     |                                ^
+  15 |
+  16 |   return (
+  17 |     <>
+[browser] Image with src "/images/sanctum-hero.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[browser] Image with src "/images/sanctum-hero.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
+⨯ The requested resource isn't a valid image for /placeholder-product.jpg received null
