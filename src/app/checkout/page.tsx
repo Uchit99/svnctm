@@ -8,6 +8,8 @@ import { useCart } from '@/components/CartProvider';
 import { formatPrice } from '@/lib/utils';
 import Link from 'next/link';
 
+const isStaticPreview = process.env.NEXT_PUBLIC_STATIC_SITE === 'true';
+
 export default function CheckoutPage() {
   const router = useRouter();
   const { items: cartItems } = useCart();
@@ -46,6 +48,10 @@ export default function CheckoutPage() {
 
   const handlePaymentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isStaticPreview) {
+      setError('Checkout is unavailable in this static preview. Please visit the live store when it is deployed to a server-capable host.');
+      return;
+    }
     setIsProcessing(true);
     setError('');
     try {

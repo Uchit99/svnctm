@@ -48,7 +48,7 @@ export function Footer() {
               <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-sm">
                 FAQ
               </Link>
-              <Link href="/shipping" className="text-white/70 hover:text-white transition-colors text-sm">
+              <Link href="/shipping-policy" className="text-white/70 hover:text-white transition-colors text-sm">
                 Shipping
               </Link>
               <Link href="/returns" className="text-white/70 hover:text-white transition-colors text-sm">

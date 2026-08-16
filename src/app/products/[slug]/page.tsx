@@ -13,6 +13,10 @@ interface ProductDetailPageProps {
   }>;
 }
 
+export function generateStaticParams() {
+  return productCatalog.map(({ slug }) => ({ slug }));
+}
+
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
   const { slug } = await params;
   const selectedProduct = productCatalog.find((item) => item.slug === slug);

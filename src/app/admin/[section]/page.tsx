@@ -10,6 +10,10 @@ const sections: Record<string, { title: string; description: string; action: str
   settings: { title: 'Store settings', description: 'Control customer-facing details, payments, and notifications.', action: 'Save changes', columns: ['Setting', 'Value', 'Updated', 'Owner'] },
 };
 
+export function generateStaticParams() {
+  return Object.keys(sections).map((section) => ({ section }));
+}
+
 export default async function AdminSection({ params }: { params: Promise<{ section: string }> }) {
   const { section } = await params;
   const config = sections[section] ?? { title: 'Management', description: 'Manage your store operations in one place.', action: 'Add item', columns: ['Name', 'Status', 'Updated', 'Actions'] };
