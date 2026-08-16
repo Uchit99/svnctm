@@ -16,7 +16,7 @@ export function Container({ children, className = '' }: ContainerProps) {
 interface SectionProps {
   children: ReactNode;
   className?: string;
-  bgColor?: 'primary' | 'secondary' | 'tertiary' | 'white';
+  bgColor?: 'primary' | 'secondary' | 'tertiary' | 'white' | 'charcoal';
   noPadding?: boolean;
 }
 
@@ -25,6 +25,7 @@ const bgColors = {
   secondary: 'bg-svnctm-pink-light',
   tertiary: 'bg-svnctm-lavender',
   white: 'bg-white',
+  charcoal: 'bg-svnctm-charcoal',
 };
 
 export function Section({
