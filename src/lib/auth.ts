@@ -1,7 +1,6 @@
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
-import { prisma } from './prisma';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -25,6 +24,9 @@ export const authOptions: NextAuthOptions = {
           return { id: 'environment-admin', email: process.env.ADMIN_EMAIL, name: 'Store administrator', role: 'ADMIN' };
         }
 
+        // Load the database client only for a credential check. This keeps
+        // deployment builds from requiring DATABASE_URL while collecting route metadata.
+        const { prisma } = await import('./prisma');
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
