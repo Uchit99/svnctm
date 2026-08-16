@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   ...(process.env.GITHUB_ACTIONS === "true" ? {
     output: "export" as const,
     trailingSlash: true,
+    basePath: "/svnctm",
     images: { unoptimized: true },
   } : {}),
 };
