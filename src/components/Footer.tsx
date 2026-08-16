@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Container } from '@/components/Layout';
-import { Mail } from 'lucide-react';
+import { Camera, Mail, PinIcon } from 'lucide-react';
 import { BRAND_COPY } from '@/lib/brand';
 
 export function Footer() {
@@ -106,17 +106,19 @@ export function Footer() {
               href="https://instagram.com/svnctm"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/60 hover:text-white transition-colors text-sm"
+              aria-label="Follow SVNCTM on Instagram"
+              className="rounded-full border border-white/20 p-2 text-white/70 transition-colors hover:border-svnctm-pink hover:bg-svnctm-pink hover:text-white"
             >
-              Instagram
+              <Camera size={18} aria-hidden="true" />
             </a>
             <a
               href="https://pinterest.com/svnctm"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/60 hover:text-white transition-colors text-sm"
+              aria-label="Follow SVNCTM on Pinterest"
+              className="rounded-full border border-white/20 p-2 text-white/70 transition-colors hover:border-svnctm-pink hover:bg-svnctm-pink hover:text-white"
             >
-              Pinterest
+              <PinIcon size={18} aria-hidden="true" />
             </a>
           </div>
         </div>

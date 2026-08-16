@@ -2,14 +2,13 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, Search, Heart, User, ShoppingBag, X } from 'lucide-react';
+import { Menu, Heart, User, ShoppingBag, X } from 'lucide-react';
 import { Container } from '@/components/Layout';
 import { useCart } from '@/components/CartProvider';
 
 export function Header() {
   const { count } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const menuItems = [
     { label: 'Shop', href: '/shop' },
@@ -44,14 +43,6 @@ export function Header() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-4">
-            {/* Search Icon */}
-            <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-            >
-              <Search size={20} className="text-svnctm-charcoal" />
-            </button>
-
             {/* Wishlist Icon */}
             <Link
               href="/wishlist"
@@ -92,18 +83,6 @@ export function Header() {
             </button>
           </div>
         </div>
-
-        {/* Search Bar */}
-        {isSearchOpen && (
-          <div className="mt-4 pb-4">
-            <input
-              type="text"
-              placeholder="Search products, scents, rituals..."
-              className="input-field w-full"
-              autoFocus
-            />
-          </div>
-        )}
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (

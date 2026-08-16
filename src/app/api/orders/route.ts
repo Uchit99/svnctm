@@ -28,12 +28,14 @@ export async function POST(request: Request) {
     const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
     const shippingCost = calculateShippingCost(subtotal);
     const tax = calculateTax(subtotal, shippingCost);
+    const orderNumber = generateOrderNumber();
     const order = await prisma.order.create({
       data: {
-        orderNumber: generateOrderNumber(), userId: user.id, subtotal, shippingCost, tax, total: subtotal + shippingCost + tax,
+        orderNumber, userId: user.id, subtotal, shippingCost, tax, total: subtotal + shippingCost + tax,
         status: 'PENDING_PAYMENT', paymentStatus: 'PENDING', paymentMethod: 'Payment pending',
         shippingAddress: { create: { ...shippingAddress, userId: user.id } },
         items: { create: items.map((item, index) => ({ productId: products[index].id, name: item.name, sku: item.sku, price: item.price, quantity: item.quantity, total: item.price * item.quantity })) },
+        notifications: { create: { userId: user.id, type: 'ORDER_CONFIRMATION', channel: 'WHATSAPP', title: 'Order confirmation', message: `Order ${orderNumber} was received. Shipping updates will be sent to ${shippingAddress.phone}.` } },
       },
     });
     return NextResponse.json({ success: true, data: { orderId: order.id, orderNumber: order.orderNumber } }, { status: 201 });

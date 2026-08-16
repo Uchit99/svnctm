@@ -5,6 +5,8 @@ import { Button } from '@/components/Button';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Mail, Lock } from 'lucide-react';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -12,6 +14,8 @@ export default function LoginPage() {
     password: '',
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -21,8 +25,16 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // TODO: Implement login logic
-    setTimeout(() => setIsLoading(false), 1000);
+    setError('');
+    const result = await signIn('credentials', { ...formData, redirect: false });
+    if (result?.error) {
+      setError('Email or password is incorrect.');
+      setIsLoading(false);
+      return;
+    }
+    const callbackUrl = new URLSearchParams(window.location.search).get('callbackUrl');
+    router.push(callbackUrl?.startsWith('/') ? callbackUrl : '/');
+    router.refresh();
   };
 
   return (
@@ -79,6 +91,7 @@ export default function LoginPage() {
             <Button type="submit" variant="primary" className="w-full mt-6">
               {isLoading ? 'Signing in...' : 'Sign In'}
             </Button>
+            {error && <p role="alert" className="rounded-brand bg-red-50 p-3 text-center text-sm text-red-700">{error}</p>}
           </form>
 
           {/* Links */}
@@ -89,7 +102,7 @@ export default function LoginPage() {
 
             <div className="border-t pt-4">
               <p className="text-svnctm-charcoal/70 mb-2">
-                Don't have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <Link href="/auth/register" className="text-svnctm-pink font-medium hover:underline">
                   Create one
                 </Link>

@@ -13,6 +13,7 @@
     --charcoal: #2E2E2E;
     --text-primary: #2E2E2E;
     --text-secondary: #666666;
+    --title: #622B51;
     --border: #E5E5E5;
     --bg-primary: #F7F5F2;
     --shadow-soft: 0 10px 40px rgba(46, 46, 46, 0.08);
@@ -41,6 +42,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-medium;
+    color: var(--title);
   }
 
   h1 {

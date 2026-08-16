@@ -1,216 +1,33 @@
-'use client';
-
+import Link from 'next/link';
+import { Box, PackageCheck, Settings, ShoppingBag, Users } from 'lucide-react';
 import { Container, Section } from '@/components/Layout';
+import { requireAdmin } from '@/lib/admin';
+import { prisma } from '@/lib/prisma';
+import { formatPrice } from '@/lib/utils';
 
-interface MetricCardProps {
-  label: string;
-  value: string | number;
-  change?: string;
-  color: 'pink' | 'purple' | 'green';
+const managementAreas = [
+  { href: '/admin/orders', title: 'Orders', description: 'Review payment, fulfilment, and delivery status.', icon: ShoppingBag },
+  { href: '/admin/products', title: 'Products', description: 'Maintain product details, prices, and catalogue visibility.', icon: Box },
+  { href: '/admin/customers', title: 'Customers', description: 'Review customer details and order history.', icon: Users },
+  { href: '/admin/inventory', title: 'Inventory', description: 'Track stock levels and low-stock thresholds.', icon: PackageCheck },
+  { href: '/admin/settings', title: 'Store settings', description: 'Manage customer-facing details and notification settings.', icon: Settings },
+];
+
+export default async function AdminDashboard() {
+  await requireAdmin();
+  const [sales, orderCount, productCount, pendingOrders, recentOrders] = await Promise.all([
+    prisma.order.aggregate({ _sum: { total: true }, where: { paymentStatus: 'COMPLETED' } }),
+    prisma.order.count(),
+    prisma.product.count(),
+    prisma.order.count({ where: { status: { in: ['PENDING_PAYMENT', 'PAYMENT_CONFIRMED', 'PROCESSING'] } } }),
+    prisma.order.findMany({ take: 5, orderBy: { createdAt: 'desc' }, include: { shippingAddress: true } }),
+  ]);
+
+  const metrics = [
+    { label: 'Completed sales', value: formatPrice(sales._sum.total ?? 0), detail: 'All paid orders' },
+    { label: 'Total orders', value: orderCount, detail: `${pendingOrders} need attention` },
+    { label: 'Products', value: productCount, detail: 'Catalogue records' },
+  ];
+
+  return <><section className="bg-svnctm-charcoal py-10 text-white"><Container><p className="eyebrow text-svnctm-pink-light">Private workspace</p><h1 className="mt-3 text-4xl text-white">Store administration</h1><p className="mt-3 text-sm text-white/70">Manage the operational side of SVNCTM from one protected place.</p></Container></section><Section className="bg-svnctm-white-warm py-14"><Container><div className="grid gap-5 md:grid-cols-3">{metrics.map((metric) => <div key={metric.label} className="rounded-brand bg-white p-6 shadow-soft"><p className="text-xs font-semibold uppercase tracking-[.14em] text-svnctm-charcoal/55">{metric.label}</p><p className="mt-3 text-3xl font-semibold text-svnctm-pink">{metric.value}</p><p className="mt-2 text-sm text-svnctm-charcoal/65">{metric.detail}</p></div>)}</div><div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{managementAreas.map(({ href, title, description, icon: Icon }) => <Link key={href} href={href} className="group rounded-brand border border-svnctm-charcoal/10 bg-white p-6 transition hover:-translate-y-1 hover:border-svnctm-pink hover:shadow-soft"><Icon size={22} className="text-svnctm-pink" /><h2 className="mt-5 text-xl">{title}</h2><p className="mt-2 text-sm leading-6 text-svnctm-charcoal/65">{description}</p><span className="mt-5 inline-block text-sm font-semibold text-svnctm-pink">Open workspace →</span></Link>)}</div></Container></Section><Section className="bg-white py-14"><Container><div className="flex items-end justify-between gap-4"><div><p className="eyebrow">Latest activity</p><h2 className="mt-3 text-3xl">Recent orders</h2></div><Link href="/admin/orders" className="text-sm font-semibold text-svnctm-pink hover:underline">View all orders</Link></div><div className="mt-7 overflow-hidden rounded-brand border border-svnctm-charcoal/10"><table className="w-full min-w-[580px] text-left text-sm"><thead className="bg-svnctm-white-warm text-xs uppercase tracking-[.12em] text-svnctm-charcoal/55"><tr><th className="px-5 py-4">Order</th><th className="px-5 py-4">Customer</th><th className="px-5 py-4">Status</th><th className="px-5 py-4 text-right">Total</th></tr></thead><tbody>{recentOrders.length ? recentOrders.map((order) => <tr key={order.id} className="border-t border-svnctm-charcoal/10"><td className="px-5 py-4 font-medium text-svnctm-charcoal">{order.orderNumber}</td><td className="px-5 py-4 text-svnctm-charcoal/70">{order.shippingAddress?.fullName ?? '—'}</td><td className="px-5 py-4"><span className="rounded-full bg-svnctm-pink-light px-3 py-1 text-xs font-semibold text-[#622B51]">{order.status.replaceAll('_', ' ').toLowerCase()}</span></td><td className="px-5 py-4 text-right font-semibold">{formatPrice(order.total)}</td></tr>) : <tr><td colSpan={4} className="px-5 py-12 text-center text-svnctm-charcoal/60">Orders will appear here once customers check out.</td></tr>}</tbody></table></div></Container></Section></>;
 }
-
-function MetricCard({ label, value, change, color }: MetricCardProps) {
-  const colorClasses = {
-    pink: 'text-svnctm-pink',
-    purple: 'text-svnctm-lavender',
-    green: 'text-green-600',
-  };
-
-  return (
-    <div className="bg-white rounded-brand p-6">
-      <p className="text-sm text-svnctm-charcoal/70 uppercase tracking-wide font-medium">
-        {label}
-      </p>
-      <p className={`text-heading-2 font-bold mt-2 ${colorClasses[color]}`}>
-        {value}
-      </p>
-      {change && (
-        <p className="text-xs text-svnctm-charcoal/60 mt-2">
-          {change}
-        </p>
-      )}
-    </div>
-  );
-}
-
-export default function AdminDashboard() {
-  return (
-    <>
-      {/* Header */}
-      <div className="bg-svnctm-charcoal text-white py-8">
-        <Container>
-          <h1 className="font-heading text-heading-1">Admin Dashboard</h1>
-          <p className="text-white/70 mt-2">Welcome back! Here's your store overview.</p>
-        </Container>
-      </div>
-
-      {/* Metrics */}
-      <Section className="bg-svnctm-white-warm">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <MetricCard label="Total Sales" value="₹45,320" change="+12% from last month" color="pink" />
-            <MetricCard label="Today's Sales" value="₹2,840" change="+5% from yesterday" color="pink" />
-            <MetricCard label="Total Orders" value="156" change="12 pending" color="purple" />
-            <MetricCard label="Products" value="24" change="3 low stock" color="green" />
-          </div>
-
-          {/* Management Sections */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white rounded-brand p-6 hover:shadow-soft transition-shadow">
-              <h3 className="font-heading text-heading-3 text-svnctm-charcoal mb-4">
-                📦 Order Management
-              </h3>
-              <p className="text-svnctm-charcoal/70 text-sm mb-4">
-                View, update, and track customer orders
-              </p>
-              <a
-                href="/admin/orders"
-                className="inline-block px-4 py-2 bg-svnctm-pink text-white rounded-brand text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                Manage Orders
-              </a>
-            </div>
-
-            <div className="bg-white rounded-brand p-6 hover:shadow-soft transition-shadow">
-              <h3 className="font-heading text-heading-3 text-svnctm-charcoal mb-4">
-                🛍️ Product Management
-              </h3>
-              <p className="text-svnctm-charcoal/70 text-sm mb-4">
-                Add, edit, and manage your product catalog
-              </p>
-              <a
-                href="/admin/products"
-                className="inline-block px-4 py-2 bg-svnctm-pink text-white rounded-brand text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                Manage Products
-              </a>
-            </div>
-
-            <div className="bg-white rounded-brand p-6 hover:shadow-soft transition-shadow">
-              <h3 className="font-heading text-heading-3 text-svnctm-charcoal mb-4">
-                👥 Customer Management
-              </h3>
-              <p className="text-svnctm-charcoal/70 text-sm mb-4">
-                View and manage customer information
-              </p>
-              <a
-                href="/admin/customers"
-                className="inline-block px-4 py-2 bg-svnctm-pink text-white rounded-brand text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                Manage Customers
-              </a>
-            </div>
-
-            <div className="bg-white rounded-brand p-6 hover:shadow-soft transition-shadow">
-              <h3 className="font-heading text-heading-3 text-svnctm-charcoal mb-4">
-                📊 Inventory
-              </h3>
-              <p className="text-svnctm-charcoal/70 text-sm mb-4">
-                Track and manage stock levels
-              </p>
-              <a
-                href="/admin/inventory"
-                className="inline-block px-4 py-2 bg-svnctm-pink text-white rounded-brand text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                View Inventory
-              </a>
-            </div>
-
-            <div className="bg-white rounded-brand p-6 hover:shadow-soft transition-shadow">
-              <h3 className="font-heading text-heading-3 text-svnctm-charcoal mb-4">
-                🏷️ Coupons
-              </h3>
-              <p className="text-svnctm-charcoal/70 text-sm mb-4">
-                Create and manage discount codes
-              </p>
-              <a
-                href="/admin/coupons"
-                className="inline-block px-4 py-2 bg-svnctm-pink text-white rounded-brand text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                Manage Coupons
-              </a>
-            </div>
-
-            <div className="bg-white rounded-brand p-6 hover:shadow-soft transition-shadow">
-              <h3 className="font-heading text-heading-3 text-svnctm-charcoal mb-4">
-                ⚙️ Settings
-              </h3>
-              <p className="text-svnctm-charcoal/70 text-sm mb-4">
-                Configure store settings and preferences
-              </p>
-              <a
-                href="/admin/settings"
-                className="inline-block px-4 py-2 bg-svnctm-pink text-white rounded-brand text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                Settings
-              </a>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Recent Orders Table */}
-      <Section className="bg-white">
-        <Container>
-          <h2 className="font-heading text-heading-2 text-svnctm-charcoal mb-6">
-            Recent Orders
-          </h2>
-
-          <div className="bg-svnctm-white-warm rounded-brand overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b">
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-svnctm-charcoal">
-                    Order ID
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-svnctm-charcoal">
-                    Customer
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-svnctm-charcoal">
-                    Amount
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-svnctm-charcoal">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-svnctm-charcoal">
-                    Date
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <tr key={i} className="border-b hover:bg-svnctm-pink-light/20 transition-colors">
-                    <td className="px-6 py-3 text-sm text-svnctm-charcoal">
-                      SV{Math.random().toString(36).substr(2, 9).toUpperCase()}
-                    </td>
-                    <td className="px-6 py-3 text-sm text-svnctm-charcoal">
-                      Customer {i}
-                    </td>
-                    <td className="px-6 py-3 text-sm font-semibold text-svnctm-charcoal">
-                      ₹{(899 * i).toLocaleString()}
-                    </td>
-                    <td className="px-6 py-3 text-sm">
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          i % 2 === 0
-                            ? 'bg-green-100 text-green-700'
-                            : 'bg-yellow-100 text-yellow-700'
-                        }`}
-                      >
-                        {i % 2 === 0 ? 'Delivered' : 'Processing'}
-                      </span>
-                    </td>
-                    <td className="px-6 py-3 text-sm text-svnctm-charcoal/70">
-                      2024-01-{i.toString().padStart(2, '0')}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Container>
-      </Section>
-    </>
-  );
-}
-
