@@ -34,8 +34,9 @@
   }
 
   ::selection {
-    background: #C54B8D;
-    color: white;
+    /* Keep selected copy legible without turning the page into solid pink blocks. */
+    background: #F7D8E6;
+    color: #2E2E2E;
   }
 
   h1, h2, h3, h4, h5, h6 {
