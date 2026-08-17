@@ -25,6 +25,8 @@ jobs:
         with:
           node-version: 20
           cache: npm
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
       - name: Install dependencies
         run: npm ci
       - name: Build static site
@@ -38,7 +40,7 @@ jobs:
           mv src/app/order-confirmation .pages-server-routes/order-confirmation
           GITHUB_PAGES_PROJECT_SITE=true NEXT_PUBLIC_STATIC_SITE=true npm run build -- --webpack
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: out
 
