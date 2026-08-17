@@ -11,10 +11,9 @@ const confirmationMessages = [
   { title: 'POV: YOU JUST BOUGHT A REALLY GOOD CANDLE. 😌', body: 'Order = confirmed. ✅\nShipping + order deets will hit your WhatsApp shortly.\n\nYour room is about to have lore.' },
 ];
 
-export function OrderConfirmationNotice({ orderNumber }: { orderNumber: string }) {
+export function OrderConfirmationNotice({ orderNumber, messageIndex }: { orderNumber: string; messageIndex: number }) {
   const [isOpen, setIsOpen] = useState(true);
-  const messageIndex = [...orderNumber].reduce((total, character) => total + character.charCodeAt(0), 0) % confirmationMessages.length;
-  const message = confirmationMessages[messageIndex];
+  const message = confirmationMessages[messageIndex % confirmationMessages.length];
 
   if (!isOpen) return null;
 
