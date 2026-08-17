@@ -21,9 +21,15 @@ export function CursorGlow() {
         point.x += (lead.x - point.x) * (index === 0 ? 0.32 : 0.24);
         point.y += (lead.y - point.y) * (index === 0 ? 0.32 : 0.24);
         const dot = trailRef.current[index];
-        if (dot) dot.style.transform = `translate3d(${point.x}px, ${point.y}px, 0) translate(-50%, -50%)`;
+        if (dot) {
+          dot.style.left = `${point.x}px`;
+          dot.style.top = `${point.y}px`;
+        }
       });
-      if (glowRef.current) glowRef.current.style.transform = `translate3d(${target.x}px, ${target.y}px, 0) translate(-50%, -50%)`;
+      if (glowRef.current) {
+        glowRef.current.style.left = `${target.x}px`;
+        glowRef.current.style.top = `${target.y}px`;
+      }
       frame = requestAnimationFrame(render);
     };
     const onPointerMove = (event: PointerEvent) => { target = { x: event.clientX, y: event.clientY }; };
