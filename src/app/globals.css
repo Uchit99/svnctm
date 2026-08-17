@@ -148,20 +148,25 @@
   }
 
   .cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 13rem;
     height: 13rem;
     border-radius: 9999px;
-    background: radial-gradient(circle, rgba(117, 75, 197, .16) 0%, rgba(117, 75, 197, .055) 35%, transparent 70%);
+    background: radial-gradient(circle, rgba(207, 200, 255, .3) 0%, rgba(207, 200, 255, .11) 35%, transparent 70%);
     filter: blur(2px);
     will-change: transform;
   }
 
   .cursor-trail {
     position: fixed;
+    top: 0;
+    left: 0;
     width: .8rem;
     height: .8rem;
     border-radius: 9999px;
-    background: #8f72d5;
+    background: var(--secondary);
     filter: blur(3px);
     will-change: transform;
   }
