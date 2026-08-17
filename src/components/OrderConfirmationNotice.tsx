@@ -3,8 +3,18 @@
 import { Check, X } from 'lucide-react';
 import { useState } from 'react';
 
+const confirmationMessages = [
+  { title: 'WELL, THAT ESCALATED QUICKLY. 👀', body: 'Your SVNCTM order is confirmed!\n\nWe’ll drop your order & shipping details on WhatsApp shortly.\n\nSee you on the other side. 🕯️' },
+  { title: 'It’s happening. 🕯️', body: 'Your candle is officially yours.\n\nWe’ll send your order & shipping details over WhatsApp shortly — so keep an eye out.\n\nUntil then, stay lit.' },
+  { title: 'OKAYYY, IT’S OFFICIAL. 🫶', body: 'Your order is confirmed & your candle is officially coming home.\n\nOrder + shipping deets will hit your WhatsApp shortly.\n\nYou’ve got taste. Just saying. 👀' },
+  { title: 'GUESS WHO’S COMING HOME? 👀', body: 'Your SVNCTM candle.\n\nOrder confirmed — shipping + order deets coming to your WhatsApp shortly.\n\nDon’t miss us too much. 🫶' },
+  { title: 'POV: YOU JUST BOUGHT A REALLY GOOD CANDLE. 😌', body: 'Order = confirmed. ✅\nShipping + order deets will hit your WhatsApp shortly.\n\nYour room is about to have lore.' },
+];
+
 export function OrderConfirmationNotice({ orderNumber }: { orderNumber: string }) {
   const [isOpen, setIsOpen] = useState(true);
+  const messageIndex = [...orderNumber].reduce((total, character) => total + character.charCodeAt(0), 0) % confirmationMessages.length;
+  const message = confirmationMessages[messageIndex];
 
   if (!isOpen) return null;
 
@@ -17,9 +27,9 @@ export function OrderConfirmationNotice({ orderNumber }: { orderNumber: string }
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-svnctm-pink-light text-svnctm-pink">
           <Check size={24} strokeWidth={3} aria-hidden="true" />
         </div>
-        <p className="eyebrow mt-5">Order confirmed</p>
-        <h2 id="order-confirmation-title" className="mt-2 text-2xl">Thank you for your order.</h2>
-        <p className="mt-3 text-sm leading-6 text-svnctm-charcoal/70">Order {orderNumber} is confirmed. We’ll share delivery updates on WhatsApp using the number provided at checkout.</p>
+        <p className="eyebrow mt-5">Order confirmed · {orderNumber}</p>
+        <h2 id="order-confirmation-title" className="mt-2 text-2xl leading-tight">{message.title}</h2>
+        <p className="mt-4 whitespace-pre-line text-sm leading-6 text-svnctm-charcoal/70">{message.body}</p>
         <button type="button" onClick={() => setIsOpen(false)} className="mt-6 rounded-full bg-svnctm-charcoal px-5 py-3 text-sm font-semibold text-white hover:bg-svnctm-pink">View order details</button>
       </section>
     </div>

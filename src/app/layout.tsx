@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CartProvider } from "@/components/CartProvider";
+import { CursorGlow } from "@/components/CursorGlow";
 
 export const metadata: Metadata = {
   title: "SVNCTM | Every Space, a Sanctum",
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-svnctm-white-warm">
-        <CartProvider><Header />
+        <CartProvider><CursorGlow /><Header />
         <main className="flex-1">{children}</main>
         <Footer /></CartProvider>
       </body>

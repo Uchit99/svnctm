@@ -9,7 +9,7 @@ export function Footer() {
   return (
     <footer className="bg-svnctm-charcoal text-white">
       <Container>
-        <div className="py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.35fr_.8fr_.9fr_1.25fr] lg:gap-12">
           {/* Brand Section */}
           <div>
             <h3 className="font-heading text-2xl font-bold mb-2">SVNCTM</h3>
@@ -22,18 +22,12 @@ export function Footer() {
           {/* Shop Links */}
           <div>
             <h4 className="font-heading font-semibold text-lg mb-4">Shop</h4>
-            <nav className="space-y-2">
+            <nav className="flex flex-col items-start gap-2.5">
               <Link href="/shop" className="text-white/70 hover:text-white transition-colors text-sm">
                 All Products
               </Link>
               <Link href="/collections" className="text-white/70 hover:text-white transition-colors text-sm">
                 Collections
-              </Link>
-              <Link href="/shop?category=candles" className="text-white/70 hover:text-white transition-colors text-sm">
-                Candles
-              </Link>
-              <Link href="/shop?category=diffusers" className="text-white/70 hover:text-white transition-colors text-sm">
-                Diffusers
               </Link>
             </nav>
           </div>
@@ -41,7 +35,7 @@ export function Footer() {
           {/* Customer Care */}
           <div>
             <h4 className="font-heading font-semibold text-lg mb-4">Customer Care</h4>
-            <nav className="space-y-2">
+            <nav className="flex flex-col items-start gap-2.5">
               <Link href="/contact" className="text-white/70 hover:text-white transition-colors text-sm">
                 Contact
               </Link>
@@ -83,12 +77,12 @@ export function Footer() {
         <div className="border-t border-white/20" />
 
         {/* Bottom Footer */}
-        <div className="py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col items-center justify-between gap-5 py-7 text-center lg:flex-row lg:text-left">
           <p className="text-white/60 text-sm">
             © {currentYear} SVNCTM. All rights reserved.
           </p>
 
-          <div className="flex gap-6 text-sm">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
             <Link href="/privacy" className="text-white/60 hover:text-white transition-colors">
               Privacy Policy
             </Link>

@@ -13,6 +13,7 @@ interface ProductCardProps {
   price: number;
   comparePrice?: number;
   image: string;
+  imagePosition?: string;
   scent?: string;
   slug: string;
   isWishlisted?: boolean;
@@ -24,6 +25,7 @@ export function ProductCard({
   price,
   comparePrice,
   image,
+  imagePosition = 'center',
   scent,
   slug,
   isWishlisted = false,
@@ -59,6 +61,7 @@ export function ProductCard({
             src={image}
             alt={name}
             fill
+            style={{ objectPosition: imagePosition }}
             className={`object-cover w-full h-full transition-transform duration-500 ${
               isHovered ? 'scale-105' : 'scale-100'
             }`}
