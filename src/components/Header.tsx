@@ -45,7 +45,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={isActive ? 'page' : undefined}
-                className={`nav-link text-sm font-medium ${isActive ? 'bg-svnctm-pink-light text-svnctm-pink font-semibold nav-link-active' : ''}`}
+                className={`nav-link text-sm font-medium ${isActive ? 'text-svnctm-pink font-semibold nav-link-active' : ''}`}
               >
                 {item.label}
               </Link>;

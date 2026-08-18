@@ -130,11 +130,21 @@
   }
 
   .nav-link {
-    @apply relative rounded-full px-3 py-2 text-svnctm-charcoal hover:bg-svnctm-pink-light hover:text-svnctm-pink;
+    @apply relative px-3 py-2 text-svnctm-charcoal hover:text-svnctm-pink;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-svnctm-pink transition-transform duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link-active::after {
+    @apply scale-x-100;
   }
 
   .nav-link-active {
-    @apply bg-svnctm-pink-light font-semibold text-svnctm-pink;
+    @apply font-semibold text-svnctm-pink;
   }
 
   .cursor-glow {
