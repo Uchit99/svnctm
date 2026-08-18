@@ -154,7 +154,7 @@
     width: 13rem;
     height: 13rem;
     border-radius: 9999px;
-    background: radial-gradient(circle, rgba(207, 200, 255, .3) 0%, rgba(207, 200, 255, .11) 35%, transparent 70%);
+    background: radial-gradient(circle, rgba(197, 75, 141, .44) 0%, rgba(247, 216, 230, .24) 38%, transparent 72%);
     transform: translate(-50%, -50%);
     filter: blur(2px);
     will-change: transform;
@@ -167,7 +167,7 @@
     width: .8rem;
     height: .8rem;
     border-radius: 9999px;
-    background: var(--secondary);
+    background: var(--primary);
     filter: blur(3px);
     transform: translate(-50%, -50%);
     will-change: transform;
