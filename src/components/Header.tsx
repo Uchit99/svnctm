@@ -21,6 +21,13 @@ export function Header() {
     { label: 'FAQ', href: '/faq' },
   ];
 
+  // GitHub Pages serves routes with a trailing slash (for example, /shop/).
+  // Match both forms and nested pages so the current section stays highlighted.
+  const isActivePath = (href: string) =>
+    pathname === href ||
+    pathname?.startsWith(`${href}/`) ||
+    (href === '/shop' && pathname?.startsWith('/products/'));
+
   return (
     <header className="sticky top-0 z-50 bg-svnctm-white-warm/95 backdrop-blur-sm border-b border-gray-200">
       <Container className="py-4">
@@ -33,12 +40,12 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {menuItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = isActivePath(item.href);
               return <Link
                 key={item.href}
                 href={item.href}
                 aria-current={isActive ? 'page' : undefined}
-                className={`nav-link text-sm font-medium ${isActive ? 'nav-link-active' : ''}`}
+                className={`nav-link text-sm font-medium ${isActive ? 'bg-svnctm-pink-light text-svnctm-pink font-semibold nav-link-active' : ''}`}
               >
                 {item.label}
               </Link>;
@@ -92,7 +99,7 @@ export function Header() {
         {isMobileMenuOpen && (
           <nav className="md:hidden pt-4 border-t mt-4 space-y-2">
             {menuItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = isActivePath(item.href);
               return <Link
                 key={item.href}
                 href={item.href}
