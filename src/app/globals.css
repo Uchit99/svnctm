@@ -147,19 +147,6 @@
     @apply font-semibold text-svnctm-pink;
   }
 
-  .cursor-glow {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 13rem;
-    height: 13rem;
-    border-radius: 9999px;
-    background: radial-gradient(circle, rgba(197, 75, 141, .12) 0%, rgba(247, 216, 230, .06) 38%, transparent 72%);
-    transform: translate(-50%, -50%);
-    filter: blur(2px);
-    will-change: transform;
-  }
-
   .cursor-trail {
     position: fixed;
     top: 0;

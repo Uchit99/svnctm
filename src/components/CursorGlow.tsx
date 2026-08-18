@@ -5,7 +5,6 @@ import { useEffect, useRef } from 'react';
 const TRAIL_LENGTH = 5;
 
 export function CursorGlow() {
-  const glowRef = useRef<HTMLDivElement>(null);
   const trailRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
@@ -26,10 +25,6 @@ export function CursorGlow() {
           dot.style.top = `${point.y}px`;
         }
       });
-      if (glowRef.current) {
-        glowRef.current.style.left = `${target.x}px`;
-        glowRef.current.style.top = `${target.y}px`;
-      }
       frame = requestAnimationFrame(render);
     };
     const onPointerMove = (event: PointerEvent) => { target = { x: event.clientX, y: event.clientY }; };
@@ -39,7 +34,6 @@ export function CursorGlow() {
   }, []);
 
   return <div className="pointer-events-none fixed inset-0 z-[100] hidden md:block" aria-hidden="true">
-    <div ref={glowRef} className="cursor-glow" />
     {Array.from({ length: TRAIL_LENGTH }, (_, index) => <div key={index} ref={(node) => { if (node) trailRef.current[index] = node; }} className="cursor-trail" style={{ opacity: (TRAIL_LENGTH - index) / (TRAIL_LENGTH * 2.6) }} />)}
   </div>;
 }

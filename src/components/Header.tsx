@@ -18,7 +18,7 @@ export function Header() {
     { label: 'Our Story', href: '/about' },
     { label: 'Journal', href: '/journal' },
     { label: 'Contact', href: '/contact' },
-    { label: 'FAQ', href: '/faq' },
+    { label: 'Blog', href: '/blog' },
   ];
 
   // GitHub Pages serves routes with a trailing slash (for example, /shop/).
