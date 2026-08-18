@@ -130,7 +130,7 @@
   }
 
   .nav-link {
-    @apply relative py-2 text-svnctm-charcoal hover:text-svnctm-pink;
+    @apply relative rounded-full px-3 py-2 text-svnctm-charcoal hover:bg-svnctm-pink-light hover:text-svnctm-pink;
   }
 
   .nav-link::after {
@@ -144,7 +144,7 @@
   }
 
   .nav-link-active {
-    @apply font-semibold text-svnctm-pink;
+    @apply bg-svnctm-pink-light font-semibold text-svnctm-pink;
   }
 
   .cursor-glow {
