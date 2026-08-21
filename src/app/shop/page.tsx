@@ -4,16 +4,17 @@ import { Container, Section } from '@/components/Layout';
 import { ProductCard } from '@/components/ProductCard';
 import { ChevronDown } from 'lucide-react';
 import { useMemo, useState } from 'react';
+import { productImageBySlug } from '@/lib/product-images';
 
 const allProducts = [
-  { id: '1', name: 'Soft Sanctuary Candle', price: 899, comparePrice: 1200, image: '/images/sanctum-hero.png', imagePosition: '70% center', scent: 'Lavender & Sandalwood', slug: 'soft-sanctuary-candle' },
-  { id: '2', name: 'Evening Ritual Candle', price: 899, image: '/images/sanctum-hero.png', imagePosition: '58% center', scent: 'Cedarwood & Amber', slug: 'evening-ritual-candle' },
-  { id: '3', name: 'Quiet Moment Candle', price: 1299, image: '/images/sanctum-hero.png', imagePosition: '85% center', scent: 'Rose & Bergamot', slug: 'quiet-moment-candle' },
-  { id: '4', name: 'Home Sanctuary Diffuser', price: 1499, image: '/images/sanctum-hero.png', imagePosition: '66% 70%', scent: 'Jasmine & Musk', slug: 'home-sanctuary-diffuser' },
-  { id: '5', name: 'Zen Moment Candle', price: 799, image: '/images/sanctum-hero.png', imagePosition: '76% 24%', scent: 'Eucalyptus & Mint', slug: 'zen-moment-candle' },
-  { id: '6', name: 'Warm Glow Candle', price: 1099, image: '/images/sanctum-hero.png', imagePosition: '100% center', scent: 'Vanilla & Honey', slug: 'warm-glow-candle' },
-  { id: '7', name: 'Serenity Diffuser', price: 1399, image: '/images/sanctum-hero.png', imagePosition: '63% center', scent: 'Lavender & Chamomile', slug: 'serenity-diffuser' },
-  { id: '8', name: 'Night Ritual Candle', price: 999, image: '/images/sanctum-hero.png', imagePosition: '86% 72%', scent: 'Chamomile & Lavender', slug: 'night-ritual-candle' },
+  { id: '1', name: 'Soft Sanctuary Candle', price: 899, comparePrice: 1200, image: productImageBySlug['soft-sanctuary-candle'], scent: 'Lavender & Sandalwood', slug: 'soft-sanctuary-candle' },
+  { id: '2', name: 'Evening Ritual Candle', price: 899, image: productImageBySlug['evening-ritual-candle'], scent: 'Cedarwood & Amber', slug: 'evening-ritual-candle' },
+  { id: '3', name: 'Quiet Moment Candle', price: 1299, image: productImageBySlug['quiet-moment-candle'], scent: 'Rose & Bergamot', slug: 'quiet-moment-candle' },
+  { id: '4', name: 'Home Sanctuary Diffuser', price: 1499, image: productImageBySlug['home-sanctuary-diffuser'], scent: 'Jasmine & Musk', slug: 'home-sanctuary-diffuser' },
+  { id: '5', name: 'Zen Moment Candle', price: 799, image: productImageBySlug['zen-moment-candle'], scent: 'Eucalyptus & Mint', slug: 'zen-moment-candle' },
+  { id: '6', name: 'Warm Glow Candle', price: 1099, image: productImageBySlug['warm-glow-candle'], scent: 'Vanilla & Honey', slug: 'warm-glow-candle' },
+  { id: '7', name: 'Serenity Diffuser', price: 1399, image: productImageBySlug['serenity-diffuser'], scent: 'Lavender & Chamomile', slug: 'serenity-diffuser' },
+  { id: '8', name: 'Night Ritual Candle', price: 999, image: productImageBySlug['night-ritual-candle'], scent: 'Chamomile & Lavender', slug: 'night-ritual-candle' },
 ];
 
 type Sort = 'featured' | 'newest' | 'price-low' | 'price-high';

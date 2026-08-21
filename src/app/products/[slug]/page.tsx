@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { AddToCartButton } from '@/components/AddToCartButton';
 import { ShareButton } from '@/components/ShareButton';
+import { productGallery, productImageBySlug } from '@/lib/product-images';
 
 interface ProductDetailPageProps {
   params: Promise<{
@@ -31,7 +32,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     materials: 'Soy Wax, Essential Oils, Cotton Wick',
     ingredients: 'Lavender Essential Oil (30%), Sandalwood Essential Oil (20%), Soy Wax (50%)',
     careInstructions: 'Trim wick to 1/4 inch before each burn. Allow wax to melt completely on first use.',
-    images: ['/images/sanctum-hero.png', '/images/sanctum-hero.png'],
+    images: [productImageBySlug[slug], ...productGallery.filter((image) => image !== productImageBySlug[slug])],
     inStock: true,
   };
 
@@ -47,12 +48,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <Image src={product.images[0]} alt={product.name} fill className="object-cover" />
               </div>
               <div className="grid grid-cols-3 gap-3">
-                {[1, 2, 3].map((i) => (
+                {product.images.slice(1, 4).map((image, index) => (
                   <div
-                    key={i}
+                    key={image}
                     className="relative overflow-hidden bg-svnctm-white-warm rounded-brand aspect-square cursor-pointer hover:ring-2 hover:ring-svnctm-pink transition-all"
                   >
-                    <Image src={product.images[0]} alt={`${product.name} view ${i}`} fill className="object-cover" />
+                    <Image src={image} alt={`${product.name} view ${index + 2}`} fill className="object-cover" />
                   </div>
                 ))}
               </div>

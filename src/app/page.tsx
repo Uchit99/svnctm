@@ -4,12 +4,13 @@ import { ArrowRight, Gift, Leaf, MoveRight, ShieldCheck, Sparkles, Truck } from 
 import { Container, Section } from '@/components/Layout';
 import { Button } from '@/components/Button';
 import { ProductCard } from '@/components/ProductCard';
+import { productImageBySlug } from '@/lib/product-images';
 
 const featuredProducts = [
-  { id: '1', name: 'Soft Sanctuary Candle', price: 899, comparePrice: 1200, image: '/images/sanctum-hero.png', imagePosition: '70% center', scent: 'Lavender & Sandalwood', slug: 'soft-sanctuary-candle' },
-  { id: '2', name: 'Evening Ritual Candle', price: 899, image: '/images/sanctum-hero.png', imagePosition: '58% center', scent: 'Cedarwood & Amber', slug: 'evening-ritual-candle' },
-  { id: '3', name: 'Quiet Moment Candle', price: 1299, image: '/images/sanctum-hero.png', imagePosition: '85% center', scent: 'Rose & Bergamot', slug: 'quiet-moment-candle' },
-  { id: '4', name: 'Home Sanctuary Diffuser', price: 1499, image: '/images/sanctum-hero.png', imagePosition: '66% 70%', scent: 'Jasmine & Musk', slug: 'home-sanctuary-diffuser' },
+  { id: '1', name: 'Soft Sanctuary Candle', price: 899, comparePrice: 1200, image: productImageBySlug['soft-sanctuary-candle'], scent: 'Lavender & Sandalwood', slug: 'soft-sanctuary-candle' },
+  { id: '2', name: 'Evening Ritual Candle', price: 899, image: productImageBySlug['evening-ritual-candle'], scent: 'Cedarwood & Amber', slug: 'evening-ritual-candle' },
+  { id: '3', name: 'Quiet Moment Candle', price: 1299, image: productImageBySlug['quiet-moment-candle'], scent: 'Rose & Bergamot', slug: 'quiet-moment-candle' },
+  { id: '4', name: 'Home Sanctuary Diffuser', price: 1499, image: productImageBySlug['home-sanctuary-diffuser'], scent: 'Jasmine & Musk', slug: 'home-sanctuary-diffuser' },
 ];
 
 export default function Home() {
