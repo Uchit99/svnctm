@@ -1,12 +1,30 @@
+const productImages = {
+  hero: '/images/products/lodhi-garden-hero.png',
+  stone: '/images/products/lodhi-garden-stone.png',
+  desk: '/images/products/lodhi-garden-desk.png',
+  marble: '/images/products/lodhi-garden-marble.png',
+  evening: '/images/products/lodhi-garden-evening.png',
+  garden: '/images/products/lodhi-garden-garden.png',
+} as const;
+
 export const productImageBySlug: Record<string, string> = {
-  'soft-sanctuary-candle': '/images/svnctm1.png',
-  'evening-ritual-candle': '/images/svnctm4.png',
-  'quiet-moment-candle': '/images/svnctm2.png',
-  'home-sanctuary-diffuser': '/images/svnctm3.png',
-  'zen-moment-candle': '/images/svnctm5.png',
-  'warm-glow-candle': '/images/svnctm.png',
-  'serenity-diffuser': '/images/svnctm3.png',
-  'night-ritual-candle': '/images/svnctm4.png',
+  'soft-sanctuary-candle': productImages.stone,
+  'evening-ritual-candle': productImages.evening,
+  'quiet-moment-candle': productImages.desk,
+  'home-sanctuary-diffuser': productImages.marble,
+  'zen-moment-candle': productImages.garden,
+  'warm-glow-candle': productImages.hero,
+  'serenity-diffuser': productImages.marble,
+  'night-ritual-candle': productImages.evening,
 };
 
-export const productGallery = ['/images/svnctm1.png', '/images/svnctm2.png', '/images/svnctm3.png', '/images/svnctm4.png', '/images/svnctm5.png'];
+export const productGallery = Object.values(productImages);
+
+export const productCollageImages = [
+  productImages.stone,
+  productImages.evening,
+  productImages.desk,
+  productImages.garden,
+  productImages.marble,
+  productImages.hero,
+];

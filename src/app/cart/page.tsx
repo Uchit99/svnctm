@@ -4,8 +4,10 @@ import { Container, Section } from '@/components/Layout';
 import { Button } from '@/components/Button';
 import { Trash2 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { formatPrice } from '@/lib/utils';
 import { useCart } from '@/components/CartProvider';
+import { productImageBySlug } from '@/lib/product-images';
 
 export default function CartPage() {
   const { items: cartItems, updateQuantity, removeItem } = useCart();
@@ -62,10 +64,15 @@ export default function CartPage() {
                   className="flex gap-6 p-6 border-b last:border-b-0 hover:bg-svnctm-white-warm transition-colors"
                 >
                   {/* Image */}
-                  <div className="w-20 h-20 bg-svnctm-white-warm rounded-brand flex-shrink-0">
-                    <div className="w-full h-full flex items-center justify-center text-svnctm-charcoal/30 text-xs">
-                      Image
-                    </div>
+                  <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-brand bg-svnctm-white-warm">
+                    <Image
+                      src={productImageBySlug[item.slug] ?? '/images/products/lodhi-garden-hero.png'}
+                      alt={item.name}
+                      fill
+                      unoptimized
+                      sizes="80px"
+                      className="object-cover"
+                    />
                   </div>
 
                   {/* Details */}
@@ -168,7 +175,7 @@ export default function CartPage() {
 
               {/* Message */}
               <p className="text-xs text-center text-svnctm-charcoal/60 italic">
-                "A little more atmosphere is waiting."
+                &ldquo;A little more atmosphere is waiting.&rdquo;
               </p>
             </div>
           </div>

@@ -36,7 +36,7 @@ export default function BlogPage() {
               <p className="mt-7 max-w-xl text-lg leading-8 text-svnctm-charcoal/65">Stories about scent, thoughtful spaces, and everyday rituals worth lingering over.</p>
             </div>
             <div className="relative h-64 overflow-hidden rounded-[1.75rem]">
-              <Image src="/images/svnctm5.png" alt="SVNCTM candle in a botanical setting" fill priority className="object-cover" />
+              <Image src="/images/products/lodhi-garden-garden.png" alt="SVNCTM candle in a botanical setting" fill priority unoptimized className="object-cover" />
             </div>
           </div>
         </Container>
@@ -46,7 +46,7 @@ export default function BlogPage() {
         <Container>
           <article className="grid overflow-hidden rounded-[2rem] bg-svnctm-charcoal text-white lg:grid-cols-2">
             <div className="relative min-h-72">
-              <Image src="/images/svnctm4.png" alt="Lit SVNCTM candle in a dark, calm home" fill className="object-cover" />
+              <Image src="/images/products/lodhi-garden-evening.png" alt="Lit SVNCTM candle in a dark, calm home" fill unoptimized className="object-cover" />
             </div>
             <div className="flex flex-col justify-center p-8 lg:p-14">
               <p className="text-xs font-semibold uppercase tracking-[.18em] text-svnctm-pink-light">Featured post</p>
