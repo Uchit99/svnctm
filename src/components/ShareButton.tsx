@@ -18,5 +18,12 @@ export function ShareButton({ title }: { title: string }) {
     }
   };
 
-  return <button type="button" onClick={share} className="share-button"><Share2 size={18} aria-hidden="true" /><span>{shared ? 'Link copied' : 'Share'}</span></button>;
+  return (
+    <button type="button" onClick={share} className="share-button">
+      <span className="inline-flex items-center justify-center gap-2">
+        <Share2 size={18} aria-hidden="true" />
+        <span>{shared ? 'Link copied' : 'Share'}</span>
+      </span>
+    </button>
+  );
 }
