@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { formatPrice } from '@/lib/utils';
 import { useCart } from '@/components/CartProvider';
-import { productImageBySlug } from '@/lib/product-images';
+import { productAssetPath, productImageBySlug } from '@/lib/product-images';
 
 export default function CartPage() {
   const { items: cartItems, updateQuantity, removeItem } = useCart();
@@ -66,7 +66,7 @@ export default function CartPage() {
                   {/* Image */}
                   <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-brand bg-svnctm-white-warm">
                     <Image
-                      src={productImageBySlug[item.slug] ?? '/images/products/lodhi-garden-hero.png'}
+                      src={productImageBySlug[item.slug] ?? productAssetPath('/images/products/lodhi-garden-hero.png')}
                       alt={item.name}
                       fill
                       unoptimized

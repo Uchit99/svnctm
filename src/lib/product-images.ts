@@ -1,10 +1,14 @@
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
+export const productAssetPath = (path: string) => `${publicBasePath}${path}`;
+
 const productImages = {
-  hero: '/images/products/lodhi-garden-hero.png',
-  stone: '/images/products/lodhi-garden-stone.png',
-  desk: '/images/products/lodhi-garden-desk.png',
-  marble: '/images/products/lodhi-garden-marble.png',
-  evening: '/images/products/lodhi-garden-evening.png',
-  garden: '/images/products/lodhi-garden-garden.png',
+  hero: productAssetPath('/images/products/lodhi-garden-hero.png'),
+  stone: productAssetPath('/images/products/lodhi-garden-stone.png'),
+  desk: productAssetPath('/images/products/lodhi-garden-desk.png'),
+  marble: productAssetPath('/images/products/lodhi-garden-marble.png'),
+  evening: productAssetPath('/images/products/lodhi-garden-evening.png'),
+  garden: productAssetPath('/images/products/lodhi-garden-garden.png'),
 } as const;
 
 export const productImageBySlug: Record<string, string> = {
