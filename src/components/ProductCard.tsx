@@ -61,6 +61,7 @@ export function ProductCard({
             src={image}
             alt={name}
             fill
+            unoptimized
             style={{ objectPosition: imagePosition }}
             className={`object-cover w-full h-full transition-transform duration-500 ${
               isHovered ? 'scale-105' : 'scale-100'

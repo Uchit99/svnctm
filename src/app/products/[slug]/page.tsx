@@ -3,11 +3,11 @@ import { Button } from '@/components/Button';
 import { Heart, Truck } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
 import { productCatalog } from '@/lib/catalog';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { AddToCartButton } from '@/components/AddToCartButton';
 import { ShareButton } from '@/components/ShareButton';
 import { productGallery, productImageBySlug } from '@/lib/product-images';
+import { ProductGallery } from '@/components/ProductGallery';
 
 interface ProductDetailPageProps {
   params: Promise<{
@@ -43,21 +43,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Product Images */}
-            <div>
-              <div className="relative overflow-hidden bg-svnctm-white-warm rounded-brand aspect-square mb-4">
-                <Image src={product.images[0]} alt={product.name} fill className="object-cover" />
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                {product.images.slice(1, 4).map((image, index) => (
-                  <div
-                    key={image}
-                    className="relative overflow-hidden bg-svnctm-white-warm rounded-brand aspect-square cursor-pointer hover:ring-2 hover:ring-svnctm-pink transition-all"
-                  >
-                    <Image src={image} alt={`${product.name} view ${index + 2}`} fill className="object-cover" />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ProductGallery images={product.images} productName={product.name} />
 
             {/* Product Info */}
             <div className="space-y-6">
