@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, Heart, User, ShoppingBag, X } from 'lucide-react';
@@ -10,6 +10,7 @@ import { useCart } from '@/components/CartProvider';
 export function Header() {
   const { count } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const pathname = usePathname();
 
   const menuItems = [
@@ -28,8 +29,15 @@ export function Header() {
     pathname?.startsWith(`${href}/`) ||
     (href === '/shop' && pathname?.startsWith('/products/'));
 
+  useEffect(() => {
+    const onScroll = () => setHasScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 bg-svnctm-white-warm/95 backdrop-blur-sm border-b border-gray-200">
+    <header className={`sticky top-0 z-50 border-b transition-all duration-500 ${hasScrolled ? 'border-white/35 bg-svnctm-white-warm/70 shadow-[0_12px_34px_rgba(46,46,46,.10)] backdrop-blur-xl' : 'border-transparent bg-svnctm-white-warm'}`}>
       <Container className="py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}

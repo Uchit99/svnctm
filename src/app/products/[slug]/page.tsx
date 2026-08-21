@@ -1,11 +1,12 @@
 import { Container, Section } from '@/components/Layout';
 import { Button } from '@/components/Button';
-import { Heart, Share2, Truck } from 'lucide-react';
+import { Heart, Truck } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
 import { productCatalog } from '@/lib/catalog';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { AddToCartButton } from '@/components/AddToCartButton';
+import { ShareButton } from '@/components/ShareButton';
 
 interface ProductDetailPageProps {
   params: Promise<{
@@ -127,10 +128,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   </Button>
                 </div>
 
-                <Button variant="ghost" className="w-full">
-                  <Share2 size={18} className="mr-2" />
-                  Share
-                </Button>
+                <ShareButton title={product.name} />
               </div>
 
               {/* Delivery Info */}

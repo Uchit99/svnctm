@@ -1,122 +1,21 @@
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 import { Container } from '@/components/Layout';
-import { Camera, Mail, PinIcon } from 'lucide-react';
-import { BRAND_COPY } from '@/lib/brand';
+
+const footerGroups = [
+  { title: 'Shop', links: [['Candles', '/shop'], ['Rituals', '/collections'], ['Gifting', '/shop']] },
+  { title: 'Studio', links: [['About', '/about'], ['Journal', '/journal'], ['Press', '/contact']] },
+  { title: 'Care', links: [['Shipping', '/shipping-policy'], ['Returns', '/returns'], ['FAQ', '/contact']] },
+  { title: 'Speak', links: [['hello@svnctm.co', 'mailto:hello@svnctm.co'], ['Instagram', 'https://instagram.com/svnctm'], ['Pinterest', 'https://pinterest.com/svnctm']] },
+];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="bg-svnctm-charcoal text-white">
-      <Container>
-        <div className="grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.35fr_.8fr_.9fr_1.25fr] lg:gap-12">
-          {/* Brand Section */}
-          <div>
-            <h3 className="font-heading text-2xl font-bold mb-2">SVNCTM</h3>
-            <p className="text-white/70 text-sm mb-4">{BRAND_COPY.tagline}</p>
-            <p className="text-white/60 text-xs leading-relaxed">
-              Thoughtfully designed objects for slower moments, softer spaces, and everyday rituals.
-            </p>
-          </div>
-
-          {/* Shop Links */}
-          <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Shop</h4>
-            <nav className="flex flex-col items-start gap-2.5">
-              <Link href="/shop" className="text-white/70 hover:text-white transition-colors text-sm">
-                All Products
-              </Link>
-              <Link href="/collections" className="text-white/70 hover:text-white transition-colors text-sm">
-                Collections
-              </Link>
-            </nav>
-          </div>
-
-          {/* Customer Care */}
-          <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Customer Care</h4>
-            <nav className="flex flex-col items-start gap-2.5">
-              <Link href="/contact" className="text-white/70 hover:text-white transition-colors text-sm">
-                Contact
-              </Link>
-              <Link href="/blog" className="text-white/70 hover:text-white transition-colors text-sm">
-                Blog
-              </Link>
-              <Link href="/shipping-policy" className="text-white/70 hover:text-white transition-colors text-sm">
-                Shipping
-              </Link>
-              <Link href="/returns" className="text-white/70 hover:text-white transition-colors text-sm">
-                Returns & Refunds
-              </Link>
-            </nav>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h4 className="font-heading font-semibold text-lg mb-4">Create Your Ritual</h4>
-            <p className="text-white/60 text-sm mb-4">
-              Join us for stories, rituals, and quiet moments.
-            </p>
-            <form className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 px-4 py-2 rounded bg-white/10 text-white placeholder-white/50 border border-white/20 focus:border-white/40 focus:outline-none transition-colors"
-              />
-              <button
-                type="submit"
-                className="px-4 py-2 bg-svnctm-pink hover:opacity-90 transition-opacity rounded"
-              >
-                <Mail size={18} />
-              </button>
-            </form>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="border-t border-white/20" />
-
-        {/* Bottom Footer */}
-        <div className="flex flex-col items-center justify-between gap-5 py-7 text-center lg:flex-row lg:text-left">
-          <p className="text-white/60 text-sm">
-            © {currentYear} SVNCTM. All rights reserved.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
-            <Link href="/privacy" className="text-white/60 hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-white/60 hover:text-white transition-colors">
-              Terms & Conditions
-            </Link>
-            <Link href="/shipping-policy" className="text-white/60 hover:text-white transition-colors">
-              Shipping Policy
-            </Link>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex gap-4">
-            <a
-              href="https://instagram.com/svnctm"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Follow SVNCTM on Instagram"
-              className="rounded-full border border-white/20 p-2 text-white/70 transition-colors hover:border-svnctm-pink hover:bg-svnctm-pink hover:text-white"
-            >
-              <Camera size={18} aria-hidden="true" />
-            </a>
-            <a
-              href="https://pinterest.com/svnctm"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Follow SVNCTM on Pinterest"
-              className="rounded-full border border-white/20 p-2 text-white/70 transition-colors hover:border-svnctm-pink hover:bg-svnctm-pink hover:text-white"
-            >
-              <PinIcon size={18} aria-hidden="true" />
-            </a>
-          </div>
-        </div>
-      </Container>
-    </footer>
-  );
+  return <footer className="overflow-hidden bg-[#070707] pb-7 pt-4 text-[#fff8f4]"><Container>
+    <div className="flex flex-col gap-7 border-b border-white/20 py-5 lg:flex-row lg:items-center lg:justify-between"><Link href="/" className="text-xl font-semibold tracking-[.3em] text-svnctm-pink">SVNCTM</Link><nav className="flex gap-7 text-xs font-semibold uppercase tracking-[.18em] text-white/85"><Link href="/shop" className="hover:text-svnctm-pink">Shop</Link><Link href="/collections" className="hover:text-svnctm-pink">Rituals</Link><Link href="/journal" className="hover:text-svnctm-pink">Story</Link></nav><Link href="/shop" className="inline-flex w-fit items-center gap-2 rounded-full bg-svnctm-pink px-5 py-2 text-xs font-semibold text-white transition-transform hover:scale-105">Collect <ArrowUpRight size={14} /></Link></div>
+    <div className="grid gap-10 py-11 lg:grid-cols-[.8fr_1.2fr]"><p className="max-w-sm text-3xl font-medium leading-tight tracking-tight text-white/90 sm:text-4xl">Make a little more space for the things that make you feel at home.</p><form className="self-start border-b border-white/70 pb-3 lg:mt-3"><label htmlFor="footer-email" className="sr-only">Your email address</label><div className="flex items-center gap-4"><input id="footer-email" type="email" placeholder="your@email.com" className="min-w-0 flex-1 bg-transparent text-lg text-white outline-none placeholder:text-[#cfe6ff]/80" /><button type="submit" className="whitespace-nowrap text-xs font-semibold uppercase tracking-[.24em] text-svnctm-pink hover:text-white">Subscribe →</button></div></form></div>
+    <div className="relative -mx-1 select-none py-5 sm:py-8"><div aria-hidden="true" className="footer-wordmark">SVNCTM</div><p className="absolute right-[5%] top-[16%] text-[9px] font-semibold uppercase tracking-[.38em] text-svnctm-pink">Est. · A Sanctum</p></div>
+    <div className="grid grid-cols-2 gap-10 border-b border-white/20 py-10 sm:grid-cols-4">{footerGroups.map((group) => <div key={group.title}><h2 className="mb-4 text-xs font-semibold uppercase tracking-[.2em] text-[#cfe6ff]">{group.title}</h2><nav className="flex flex-col items-start gap-2 text-xs font-semibold uppercase tracking-[.18em] text-white/90">{group.links.map(([label, href]) => <Link key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} className="hover:text-svnctm-pink">{label}</Link>)}</nav></div>)}</div>
+    <div className="flex flex-col gap-4 pt-6 text-[10px] font-semibold uppercase tracking-[.22em] text-white/75 lg:flex-row lg:items-center lg:justify-between"><span className="text-lg tracking-[.28em] text-svnctm-pink">SVNCTM</span><span>© SVNCTM {currentYear} — Every Space, a Sanctum.</span></div>
+  </Container></footer>;
 }
